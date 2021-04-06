@@ -19,3 +19,5 @@ require 'factory_bot_rails'
 #     FactoryBot.create_list(:book, 4, library: library)
 #   end
 # end
+
+# Class.find_or_create_by!(name: 'Larry')
