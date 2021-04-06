@@ -1,3 +1,5 @@
+<p class="btn btn-light" role="button"><%= link_to 'Start an Application', '/pet_applications/new' %></p>
+
 <h1>All pets</h1>
 
 <%= form_with url: "/pets", method: :get, local: true do |f| %>
@@ -5,7 +7,6 @@
   <%= f.text_field :search %>
   <%= f.submit "Search" %>
 <% end %>
-
 
 <% @pets.each do |pet| %>
   <h3><%= pet.name %></h3>

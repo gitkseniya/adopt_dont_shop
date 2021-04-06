@@ -3,4 +3,16 @@
 
 body {
   background-image: url(https://img.wallpapersafari.com/desktop/1280/1024/1/17/becwTq.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  height: 100%;
+}
+
+body, html {
+  height: 100%;
 }
