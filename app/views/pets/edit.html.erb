@@ -1,16 +1,17 @@
 <h1>Edit Veterinarian</h1>
-<%= form_with url: "/pets/#{@pet.id}", method: :patch, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_tag("/pets/#{@pet.id}", method: :patch) do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @pet.name %><br>
 
-  <%= f.label :breed %>
-  <%= f.text_field :breed %>
+  <%= label_tag :breed %>
+  <%= text_field_tag :breed, @pet.breed %><br>
 
-  <%= f.label :adoptable %>
-  <%= f.check_box :adoptable %>
+  <%= label_tag :adoptable %>
+  <%= check_box_tag :adoptable %><br>
 
-  <%= f.label :age %>
-  <%= f.number_field :age %>
+  <%= label_tag :age %>
+  <%= number_field_tag :age, @pet.age %><br>
 
-  <%= f.submit %>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
 <% end %>
