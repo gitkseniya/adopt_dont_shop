@@ -1,6 +1,6 @@
 <h1>New Application</h1>
 
-<%= form_with url: "/applications/new", method: :post, local: true do |f| %>
+<%= form_with url: "/applications", method: :post, local: true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 <br>
@@ -15,6 +15,9 @@
 <br>
   <%= f.label :zipcode %>
   <%= f.text_field :zipcode %>
+
+  <% f.text_field :cover_letter, value: " " %>
+  <% f.select :status, value: "In Progress" %>
 <br>
-  <%= f.submit %>
+  <%= f.submit "Submit" %>
 <% end %>
