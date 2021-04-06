@@ -24,9 +24,10 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'simplecov'
-  gem 'factory_bot_rails'
   gem 'faker'
 end
+
+gem 'factory_bot_rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
