@@ -1,17 +1,17 @@
 require 'factory_bot_rails'
 
-PetApplication.destroy_all
-Pet.destroy_all
-Applicant.destroy_all
-Shelter.destroy_all
-
-FactoryBot.create(:shelter)
-FactoryBot.create(:applicant)
-FactoryBot.create(:pet)
-FactoryBot.create(:pet_application)
-FactoryBot.create(:pet_application)
-FactoryBot.create(:pet_application)
-FactoryBot.create(:pet_application)
+# PetApplication.destroy_all
+# Pet.destroy_all
+# Application.destroy_all
+# Shelter.destroy_all
+#
+# FactoryBot.create(:shelter)
+# FactoryBot.create(:application)
+# FactoryBot.create(:pet)
+# FactoryBot.create(:application)
+# FactoryBot.create(:application)
+# FactoryBot.create(:application)
+# FactoryBot.create(:application)
 
 
 # 3.times do
