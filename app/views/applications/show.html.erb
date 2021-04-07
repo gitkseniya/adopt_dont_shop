@@ -1,19 +1,26 @@
-<h1>All Applications</h1>
+<h3><%= @application.name %>'s application</h3>
+<p>Address: <%=
+  "#{@application.street_address} St, #{@application.city}, #{@application.state} #{@application.zipcode} "
+  %></p>
+<h6>Why they would make a good home: <%=
+  @application.cover_letter %></h6>
+<h6>Names of all pets that this application is for :</h6>
+<% @application.pets.each do |pet| %>
+<%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
+<% end %>
+<p>Status: <%= @application.status %></p>
+<br><br>
+<h3>Add a Pet to this Application</h3>
 
-<%= form_with url: "/applications", method: :get, local: true do |f| %>
+<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
   <%= f.label :search %>
   <%= f.text_field :search %>
   <%= f.submit "Search" %>
 <% end %>
 
-<h3><%= @application.name %>'s application</h3>
-<p>Address: <%=
-  "#{@application.street_address} St, #{@application.city}, #{@application.state} #{@application.zipcode} "
-  %></p>
-<h5>Why they would make a good home: <%=
-  @application.cover_letter %></h5>
-<h5>Names of all pets that this application is for :</h5>
-<% @application.pets.each do |pet| %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
+<% if params[:search] %>
+<% @pets.each do |pet| %>
+<%= pet.name %>
+<%= button_to 'Adopt me', application_pets_path(pet: pet) %>
 <% end %>
-<p>Status: <%= @application.status %></p>
+<% end %>
