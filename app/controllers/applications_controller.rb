@@ -27,12 +27,8 @@ class ApplicationsController < ApplicationController
 
   def update
     application = Application.find(params[:id])
-    if application.update(application_params)
+      application.update(application_params)
       redirect_to "/applications/#{application.id}"
-    else
-      redirect_to "/applications/#{application.id}/edit"
-      flash[:alert] = "Error: #{error_message(application.errors)}"
-    end
   end
 
   private
