@@ -1,0 +1,47 @@
+<h1>Applications</h1>
+
+    <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @applications.each do |application| %>
+        <tr>
+          <td><%= link_to application.name, "applications/#{application.id}" %></td>
+          <td><%= application.street_address %></td>
+          <td><%= application.city %></td>
+          <td><%= application.state %></td>
+          <td><%= application.zipcode %></td>
+          <td><%= application.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <br>
+
+    <h2>Pet Applications:</h2>
+    <table>
+    <thead>
+      <tr>
+        <th>Pet Name</th>
+        <th>Applicant Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pet_applications.each do |petapplication| %>
+        <tr>
+          <td><%= petapplication.pet.name %></td>
+          <td><%= petapplication.application.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>

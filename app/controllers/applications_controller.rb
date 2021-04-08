@@ -6,6 +6,11 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def index
+    @applications = Application.all
+    @pet_applications = PetApplication.all
+  end
+
   def new
   end
 
@@ -16,6 +21,16 @@ class ApplicationsController < ApplicationController
       redirect_to "/applications/#{application.id}"
     else
       redirect_to '/applications/new'
+      flash[:alert] = "Error: #{error_message(application.errors)}"
+    end
+  end
+
+  def update
+    application = Application.find(params[:id])
+    if application.update(application_params)
+      redirect_to "/applications/#{application.id}"
+    else
+      redirect_to "/applications/#{application.id}/edit"
       flash[:alert] = "Error: #{error_message(application.errors)}"
     end
   end
