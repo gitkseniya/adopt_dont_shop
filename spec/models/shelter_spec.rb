@@ -21,6 +21,12 @@ RSpec.describe Shelter, type: :model do
     @pet_2 = @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
     @pet_3 = @shelter_3.pets.create(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
     @pet_4 = @shelter_1.pets.create(name: 'Ann', breed: 'ragdoll', age: 5, adoptable: true)
+
+    @application_1 = create(:application, status: "Pending")
+    @application_2 = create(:application, status: "Pending")
+
+    PetApplication.create(application_id: @application_1.id, pet_id: @pet_1.id)
+    PetApplication.create(application_id: @application_2.id, pet_id: @pet_2.id)
   end
 
   describe 'class methods' do
@@ -72,6 +78,10 @@ RSpec.describe Shelter, type: :model do
       it 'shows shelters in the system listed in reverse alphabetical order by name' do
         expect(Shelter.reverse_shelters).to eq([@shelter_2, @shelter_3, @shelter_1])
       end
+
+      it 'shows applications with status Pending' do
+          expect(Shelter.pending_applications).to eq([@shelter_1])
+        end
     end
   end
 end

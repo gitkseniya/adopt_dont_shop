@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'the applications show' do
   it "shows the application and all it's attributes" do
+    shelter = create(:shelter, id: 9999)
+    pet = Pet.create!(adoptable: true, age: 1, breed: 'lalalalla', name: 'Luna', shelter_id: 9999)
     application = create(:application)
-    pet = create(:pet, name: "Luna")
 
     visit "/applications/#{application.id}"
 
