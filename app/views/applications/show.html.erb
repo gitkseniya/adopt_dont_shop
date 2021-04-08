@@ -1,26 +1,56 @@
 <h3><%= @application.name %>'s application</h3>
-<p>Address: <%=
-  "#{@application.street_address} St, #{@application.city}, #{@application.state} #{@application.zipcode} "
-  %></p>
-<h6>Why they would make a good home: <%=
-  @application.cover_letter %></h6>
+<p>Address:
+  <%="#{@application.street_address}, #{@application.city}, #{@application.state} #{@application.zipcode}"%>
+</p>
+
 <h6>Names of all pets that this application is for :</h6>
-<% @application.pets.each do |pet| %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
+
+  <% @application.pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}"%>
+  <% end %>
+
+<% if @application.pets.count > 0 %>
+<%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+<%= f.label :cover_letter %>
+<%= f.text_field :cover_letter %>
+<%= f.submit "Add CV", class: "btn btn-info"%>
 <% end %>
-<p>Status: <%= @application.status %></p>
+<% end %>
+
 <br><br>
+
+
+
+<p>Status: <%= @application.status %></p><br>
 <h3>Add a Pet to this Application</h3>
 
-<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
   <%= f.label :search %>
   <%= f.text_field :search %>
-  <%= f.submit "Search" %>
-<% end %>
+  <%= f.submit "Search", class: "btn btn-info"%>
+  <% end %>
 
-<% if params[:search] %>
-<% @pets.each do |pet| %>
-<%= pet.name %>
-<%= button_to 'Adopt me', application_pets_path(pet: pet) %>
-<% end %>
-<% end %>
+  <% if params[:search] %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pets.each do |pet| %>
+        <tr>
+          <td><%= link_to pet.name, "/pets/#{pet.id}", class: "btn btn-primary" %> ---></td>
+          <td><%= form_with url: "/applications/#{@application.id}/pets", method: :create, local: true do |f| %>
+          <%= f.hidden_field :pet_id, :value => pet.id %>
+          <%= f.hidden_field :application_id, :value => @application.id %>
+          <%= f.submit "Adopt me", class: "btn btn-outline-success"%>
+          <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
