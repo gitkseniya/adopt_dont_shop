@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   post '/applications', to: 'applications#create'
 
-  get '/admin/shelters', to: 'admin_shelters#index'
+  get '/admin/shelters', to: 'admin/shelters#index'
 
   get '/veterinary_offices', to: 'veterinary_offices#index'
   get '/veterinary_offices/new', to: 'veterinary_offices#new'
