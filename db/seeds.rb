@@ -13,6 +13,6 @@ FactoryBot.create(:shelter)
   FactoryBot.create(:application)
 end
 
-5.times do
+30.times do
   FactoryBot.create(:pet)
 end
