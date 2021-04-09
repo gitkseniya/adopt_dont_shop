@@ -6,7 +6,6 @@ FactoryBot.define do
     age { Faker::Number.between(from: 1, to: 20) }
     breed { Faker::Creature::Cat.breed }
     name { Faker::Creature::Animal.unique.name }
-
     association :shelter, factory: :shelter
   end
 end
