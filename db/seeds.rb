@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'factory_bot_rails'
-require 'faker'
 
+PetApplications.destroy_all
 Pet.destroy_all
 Application.destroy_all
 Shelter.destroy_all
