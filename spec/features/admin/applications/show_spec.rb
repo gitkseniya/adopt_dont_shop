@@ -35,4 +35,14 @@ RSpec.describe 'the applications show' do
     expect(page).not_to have_button("Reject")
     expect(page).to have_content("Your application has been rejected, don't come back!")
   end
+
+  it "allows to approve application for one pet when there is already an existing application" do
+    expect(page).to have_button("Approve")
+    click_button "Approve"
+
+    visit "/admin/applications/#{@application2.id}"
+
+    expect(page).to have_button("Approve")
+    expect(page).to have_button("Reject")
+  end
 end
