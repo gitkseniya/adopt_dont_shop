@@ -1,0 +1,23 @@
+<%= form_with url: "/admin/applications/#{@application.id}", method: :patch, local: true do |f| %>
+<%= @application.name %>
+<%= @application.cover_letter %>
+<%= @application.status %>
+
+<% @application.pets.each do |pet| %>
+<%= pet.name %>
+<% end %>
+
+<% if @application.status != "Approved" && @application.status != "Rejected" %><br>
+<%= f.submit "Approve", class: "btn btn-info"%>
+<%= f.submit "Reject", class: "btn btn-danger"%>
+
+<% end %>
+
+
+<% if @application.status == "Approved" %>
+<%= "Your application has been approved!" %>
+<% elsif @application.status == "Rejected" %>
+<%= "Your application has been rejected, don't come back!" %>
+<% end %>
+
+<% end %>
