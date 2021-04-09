@@ -2,7 +2,7 @@
 
 require 'factory_bot_rails'
 
-PetApplications.destroy_all
+PetApplication.destroy_all
 Pet.destroy_all
 Application.destroy_all
 Shelter.destroy_all
