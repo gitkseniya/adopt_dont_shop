@@ -20,7 +20,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'capybara'
-  gem 'faker'
   gem 'launchy'
   gem 'orderly'
   gem 'pry'
@@ -30,6 +29,7 @@ group :development, :test do
 end
 
 gem 'factory_bot_rails'
+gem 'faker'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
