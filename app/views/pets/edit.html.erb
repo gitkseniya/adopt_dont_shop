@@ -1,3 +1,6 @@
+<div class="centering">
+
+
 <h1>Edit Pet</h1>
 <%= form_tag("/pets/#{@pet.id}", method: :patch) do %>
   <%= label_tag :name %>
@@ -15,3 +18,5 @@
   <button type="submit" class="btn btn-primary">Save</button>
 
 <% end %>
+
+</div>

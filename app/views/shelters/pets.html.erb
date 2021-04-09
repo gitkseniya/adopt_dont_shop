@@ -1,3 +1,6 @@
+
+<div class="centering">
+
 <h1>All pets at <%= @shelter.name %></h1>
 
 <%= link_to "Sort alphabetically", "/shelters/#{@shelter.id}/pets?sort=alphabetical" %>
@@ -18,3 +21,5 @@
 <% end %>
 
 <p><%= link_to "Create a Pet", "/shelters/#{@shelter.id}/pets/new" %></p>
+
+</div>

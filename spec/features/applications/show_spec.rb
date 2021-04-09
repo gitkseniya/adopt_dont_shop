@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'the applications show' do
@@ -17,8 +19,8 @@ RSpec.describe 'the applications show' do
 
     expect(page).not_to have_content(pet.name)
 
-    fill_in "Search", with: "Lu"
-    click_button"Search"
+    fill_in 'Search', with: 'Lu'
+    click_button 'Search'
     expect(page).to have_content(pet.name)
   end
 end

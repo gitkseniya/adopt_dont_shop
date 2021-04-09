@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :shelter, class: Shelter do
-    name { Faker::TvShows::NewGirl.character  }
+    name { Faker::TvShows::NewGirl.character }
     foster_program { Faker::Boolean.boolean }
     city { Faker::Address.city }
     rank { Faker::Number.between(from: 1, to: 5) }

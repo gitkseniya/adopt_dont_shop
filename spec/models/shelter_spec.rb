@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Shelter, type: :model do
@@ -18,21 +20,21 @@ RSpec.describe Shelter, type: :model do
     @shelter_3 = Shelter.create(name: 'Fancy pets of Colorado', city: 'Denver, CO', foster_program: true, rank: 10)
 
     @pet_1 = @shelter_1.pets.create(name: 'Mr. Pirate', breed: 'tuxedo shorthair', age: 5, adoptable: false)
-    @pet_2 = @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
-    @pet_3 = @shelter_3.pets.create(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
+    @pet2 = @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
+    @pet3 = @shelter_3.pets.create(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
     @pet_4 = @shelter_1.pets.create(name: 'Ann', breed: 'ragdoll', age: 5, adoptable: true)
 
-    @application_1 = create(:application, status: "Pending")
-    @application_2 = create(:application, status: "Pending")
+    @application_1 = create(:application, status: 'Pending')
+    @application_2 = create(:application, status: 'Pending')
 
     PetApplication.create(application_id: @application_1.id, pet_id: @pet_1.id)
-    PetApplication.create(application_id: @application_2.id, pet_id: @pet_2.id)
+    PetApplication.create(application_id: @application_2.id, pet_id: @pet2.id)
   end
 
   describe 'class methods' do
     describe '#search' do
       it 'returns partial matches' do
-        expect(Shelter.search("Fancy")).to eq([@shelter_3])
+        expect(Shelter.search('Fancy')).to eq([@shelter_3])
       end
     end
 
@@ -52,13 +54,13 @@ RSpec.describe Shelter, type: :model do
   describe 'instance methods' do
     describe '.adoptable_pets' do
       it 'only returns pets that are adoptable' do
-        expect(@shelter_1.adoptable_pets).to eq([@pet_2, @pet_4])
+        expect(@shelter_1.adoptable_pets).to eq([@pet2, @pet_4])
       end
     end
 
     describe '.alphabetical_pets' do
       it 'returns pets associated with the given shelter in alphabetical name order' do
-        expect(@shelter_1.alphabetical_pets).to eq([@pet_4, @pet_2])
+        expect(@shelter_1.alphabetical_pets).to eq([@pet_4, @pet2])
       end
     end
 
@@ -80,8 +82,8 @@ RSpec.describe Shelter, type: :model do
       end
 
       it 'shows applications with status Pending' do
-          expect(Shelter.pending_applications).to eq([@shelter_1])
-        end
+        expect(Shelter.pending_applications).to eq([@shelter_1])
+      end
     end
   end
 end

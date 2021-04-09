@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'application creation' do
   describe 'the application new' do
     it 'can direct user to new application form' do
-      visit "/pets"
+      visit '/pets'
 
       expect(page).to have_link('Start an Application')
 
@@ -28,7 +30,7 @@ RSpec.describe 'application creation' do
       fill_in 'Street address', with: '123 yellow brick road'
       fill_in 'City', with: 'Neverland'
       fill_in 'state', with: 'ZZ'
-      fill_in 'Zipcode', with: 77777
+      fill_in 'Zipcode', with: 77_777
 
       click_button 'Submit'
 
