@@ -6,10 +6,10 @@ require 'factory_bot_rails'
 
 # FactoryBot.create(:shelter)
 
-3.times do
-FactoryBot.create(:application)
-end
-
-5.times do
-FactoryBot.create(:pet)
-end
+# 3.times do
+# FactoryBot.create(:application)
+# end
+#
+# 5.times do
+# FactoryBot.create(:pet)
+# end
